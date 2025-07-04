@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { User, TenantShare, TenantDiscount } from '../../types'
-import { mockUsers, tenantManagement, mockSettings } from '../../data/mockData'
+import { User, TenantDiscount } from '../../types'
+import { tenantManagement, mockSettings } from '../../data/mockData'
 import { useNotifications } from '../../contexts/NotificationContext'
 import { useCurrency } from '../../contexts/CurrencyContext'
 import Card from '../ui/Card'
@@ -16,7 +16,7 @@ const TenantManagement: React.FC = () => {
   const [showDiscountForm, setShowDiscountForm] = useState<string | null>(null)
   const [tenants, setTenants] = useState<User[]>(tenantManagement.getTenants())
   const { addNotification } = useNotifications()
-  const { currency, formatCurrency } = useCurrency()
+  const { formatCurrency } = useCurrency()
 
   const refreshTenants = () => {
     setTenants(tenantManagement.getTenants())

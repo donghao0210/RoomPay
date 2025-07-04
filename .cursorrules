@@ -100,68 +100,42 @@ If needed, you can further use the web_scraper.py file to scrape the web page co
 • Use 'gpt-4o' as the model name for OpenAI's GPT-4 with vision capabilities
 • In Tailwind CSS, avoid using invalid classes like 'border-border' - use standard CSS properties or valid Tailwind classes instead
 • In React contexts, always check the actual export names - NotificationContext exports 'useNotifications' (plural), not 'useNotification' (singular)
+• When using framer-motion with React components, extend HTMLMotionProps<"element"> instead of React.HTMLAttributes to avoid type conflicts with animation event handlers
+• In vite-plugin-pwa configuration, avoid using deprecated properties like 'cacheKeyWillBeUsed' in runtime caching options as they can cause workbox validation errors
 
 # Scratchpad
 
-## Current Task: Tenant Discount System Implementation
+## Current Task: PWA Build Error Fix
 
 ### Task Explanation:
-User requested adding a "discount" section to cover cases where tenants can opt-in for discounts by master tenant. This system should allow master tenants to apply discounts to specific tenants for various reasons (loyalty, maintenance help, etc.).
+Build was failing due to a TypeError in workbox-build related to vite-plugin-pwa configuration. The error occurred during service worker generation due to an invalid configuration property.
+
+### Error Details:
+```
+TypeError: Cannot read properties of undefined (reading 'properties')
+at better-ajv-errors validation
+```
 
 ### Planning Steps:
-[X] Add TenantDiscount interface to types
-[X] Update TenantShare interface to include optional discount field
-[X] Add discount management functions to TenantManagement interface
-[X] Update mock data with sample discount examples
-[X] Implement discount management functions in mockData.ts
-[X] Create DiscountForm component for adding/editing discounts
-[X] Update TenantManagement component to show discount information
-[X] Add discount management buttons (Add/Remove Discount)
-[X] Update SubtenantDashboard to display tenant's discount details
+✅ Check vite.config.ts PWA plugin configuration
+✅ Identify the invalid configuration causing validation to fail
+✅ Fix the PWA configuration
+✅ Test the build process
+✅ Document the solution
 
 ### Progress:
-✅ COMPLETED: TenantDiscount interface with percentage/fixed types
-✅ COMPLETED: Updated TenantShare interface with optional discount
-✅ COMPLETED: Extended TenantManagement with discount methods
-✅ COMPLETED: Sample discount data for Alice (10% loyalty) and Bob (RM50 maintenance)
-✅ COMPLETED: Discount calculation and management functions
-✅ COMPLETED: DiscountForm component with validation and date ranges
-✅ COMPLETED: TenantManagement component shows discount info and controls
-✅ COMPLETED: SubtenantDashboard displays rent details with discount section
+✅ COMPLETED: Identified the issue - cacheKeyWillBeUsed property in runtime caching
+✅ COMPLETED: Removed the deprecated cacheKeyWillBeUsed property from workbox configuration
+✅ COMPLETED: Simplified runtime caching configuration to use only supported properties
+✅ COMPLETED: Build now completes successfully
+✅ COMPLETED: Added lesson about PWA workbox configuration
 
-### Discount System Features:
-✅ Support for percentage-based discounts (e.g., 10% off)
-✅ Support for fixed-amount discounts (e.g., RM50 off)
-✅ Reason tracking for transparency
-✅ Start/end date management for time-limited discounts
-✅ Active/inactive status control
-✅ Master tenant attribution tracking
-✅ Automatic discount calculation
-✅ Visual discount display in tenant cards
-✅ Tenant dashboard showing their discount benefits
+### Technical Details:
+✅ The error was caused by using 'cacheKeyWillBeUsed' property in runtime caching options
+✅ This property appears to be deprecated or invalid in the current workbox version
+✅ Solution: Remove the cacheKeyWillBeUsed function from runtime caching configuration
+✅ Kept the essential caching options: cacheName, expiration settings
+✅ Build process now completes without errors
 
-### User Interface Enhancements:
-✅ Green-themed discount indicators for positive visual feedback
-✅ Clear "before/after" pricing display
-✅ Conditional buttons (Add Discount vs Remove Discount)
-✅ Form validation for discount values and reasons
-✅ Mobile-responsive discount information display
-✅ Savings calculation display for tenants
-
-### Technical Implementation:
-✅ Type-safe discount interfaces
-✅ Comprehensive validation (percentage ≤ 100%, positive values)
-✅ Date range validation
-✅ Clean separation of discount logic
-✅ Notification system integration
-✅ Proper error handling and user feedback
-
-### Final Status:
-✅ Discount system fully implemented and functional
-✅ Master tenants can add/remove discounts for any tenant
-✅ Tenants can view their discount details and savings
-✅ All previous features maintained (tenant management, WiFi, etc.)
-✅ Responsive design across all discount-related UI
-✅ No compilation errors or issues
-✅ Enhanced tenant management capabilities
-✅ Improved tenant experience with discount transparency 
+### Status: COMPLETED
+PWA build error has been resolved. The application now builds successfully with proper service worker generation. 

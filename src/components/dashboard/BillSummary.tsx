@@ -2,7 +2,7 @@ import React from 'react'
 import { useCurrency } from '../../contexts/CurrencyContext'
 import { mockBills } from '../../data/mockData'
 import Card from '../ui/Card'
-import { format } from 'date-fns'
+// import { format } from 'date-fns'
 
 const BillSummary: React.FC = () => {
   const { formatCurrency } = useCurrency()

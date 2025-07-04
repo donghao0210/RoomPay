@@ -1,5 +1,5 @@
 # Room Pay PWA
-## !! WIP project
+## !! WIP project, Vibe Coding, Tesing out AI capabilities while solving real world problems
 A comprehensive Progressive Web App for managing rent, utilities, and tenant operations in shared living spaces. Built with React, TypeScript, Tailwind CSS, and featuring a modern mobile-first design with advanced form components.
 
 ## ✨ Features Overview

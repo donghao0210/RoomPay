@@ -11,7 +11,7 @@ import { Settings as SettingsType, PropertySettings } from '../types'
 const Settings: React.FC = () => {
   const { currentUser } = useAuth()
   const { addNotification } = useNotifications()
-  const { currency, setCurrency } = useCurrency()
+  const { setCurrency } = useCurrency()
   const [settings, setSettings] = useState<SettingsType>(mockSettings)
   const [propertySettings, setPropertySettings] = useState<PropertySettings>(
     propertySettingsManagement.getSettings()
