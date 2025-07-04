@@ -19,6 +19,11 @@ export default defineConfig({
         start_url: '/',
         icons: [
           {
+            src: 'pwa-64x64.png',
+            sizes: '64x64',
+            type: 'image/png'
+          },
+          {
             src: 'pwa-192x192.png',
             sizes: '192x192',
             type: 'image/png'
@@ -29,10 +34,27 @@ export default defineConfig({
             type: 'image/png'
           },
           {
-            src: 'pwa-512x512.png',
+            src: 'maskable-icon-512x512.png',
             sizes: '512x512',
             type: 'image/png',
-            purpose: 'any maskable'
+            purpose: 'maskable'
+          }
+        ],
+        categories: ['productivity', 'finance', 'utilities'],
+        shortcuts: [
+          {
+            name: 'Dashboard',
+            short_name: 'Dashboard',
+            description: 'View your dashboard',
+            url: '/',
+            icons: [{ 'src': 'pwa-192x192.png', 'sizes': '192x192' }]
+          },
+          {
+            name: 'Settings',
+            short_name: 'Settings',
+            description: 'Manage settings',
+            url: '/settings',
+            icons: [{ 'src': 'pwa-192x192.png', 'sizes': '192x192' }]
           }
         ]
       },
